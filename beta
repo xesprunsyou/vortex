@@ -1,8 +1,10 @@
+
+
 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
 local Notify = AkaliNotif.Notify;
 
-if getgenv().LuaBotloaded == true then
-    if getgenv().LuaBot.Options.Notifications == true then
+if getgenv().vortexloaded == true then
+    if getgenv().vortex.Options.Notifications == true then
 
 Notify({
 Description = "Settings From Script Updated.";
@@ -12,25 +14,25 @@ Duration = 1.5;
         return
     end
     end
-    getgenv().LuaBotloaded = true
+    getgenv().vortexloaded = true
     
-    if getgenv().LuaBot.Options.Notifications == true then
+    if getgenv().vortex.Options.Notifications == true then
 
 Notify({
 Description = "Checking Assets";
-Title = "LuaBot";
+Title = "vortex";
 Duration = 1.5;
 });
 wait(2)
 Notify({
 Description = "Checking User";
-Title = "LuaBot";
+Title = "vortex";
 Duration = 1.5;
 });
 wait(2)
 Notify({
-Description = "LuaBot Loaded Enjoy";
-Title = "LuaBot";
+Description = "vortex Loaded Enjoy";
+Title = "vortex";
 Duration = 1.5;
 });
 end
@@ -49,37 +51,37 @@ local silentcircle = Drawing.new("Circle")
 
 local tracercircle = Drawing.new("Circle")
 
-silentcircle.Transparency = getgenv(). LuaBot.Fov.Silent.Transparency
-silentcircle.Thickness = getgenv().LuaBot.Fov.Silent.Thickness
-silentcircle.Color = getgenv().LuaBot.Fov.Silent.Color
-silentcircle.Filled = getgenv().LuaBot.Fov.Silent.Filled
+silentcircle.Transparency = getgenv(). vortex.Fov.Silent.Transparency
+silentcircle.Thickness = getgenv().vortex.Fov.Silent.Thickness
+silentcircle.Color = getgenv().vortex.Fov.Silent.Color
+silentcircle.Filled = getgenv().vortex.Fov.Silent.Filled
 
-tracercircle.Transparency = getgenv().LuaBot.Fov.Camlock.Transparency
-tracercircle.Thickness = getgenv().LuaBot.Fov.Camlock.Thickness
-tracercircle.Color = getgenv().LuaBot.Fov.Camlock.Color
-tracercircle.Filled = getgenv().LuaBot.Fov.Camlock.Filled
+tracercircle.Transparency = getgenv().vortex.Fov.Camlock.Transparency
+tracercircle.Thickness = getgenv().vortex.Fov.Camlock.Thickness
+tracercircle.Color = getgenv().vortex.Fov.Camlock.Color
+tracercircle.Filled = getgenv().vortex.Fov.Camlock.Filled
 
 local UpdateFOV = function ()
     if (not silentcircle and not tracercircle) then
         return silentcircle and tracercircle
     end
-    tracercircle.Visible  = getgenv().LuaBot.Fov.Camlock.Visible
-    tracercircle.Radius   = getgenv().LuaBot.Fov.Camlock.Size * 2
-    tracercircle.Filled = getgenv().LuaBot.Fov.Camlock.Filled
-    tracercircle.Thickness = getgenv().LuaBot.Fov.Camlock.Thickness
-    tracercircle.Transparency = getgenv().LuaBot.Fov.Camlock.Transparency
+    tracercircle.Visible  = getgenv().vortex.Fov.Camlock.Visible
+    tracercircle.Radius   = getgenv().vortex.Fov.Camlock.Size * 2
+    tracercircle.Filled = getgenv().vortex.Fov.Camlock.Filled
+    tracercircle.Thickness = getgenv().vortex.Fov.Camlock.Thickness
+    tracercircle.Transparency = getgenv().vortex.Fov.Camlock.Transparency
     tracercircle.Position = Vector2.new(Mouse.X, Mouse.Y + (game:GetService("GuiService"):GetGuiInset().Y))
-    tracercircle.Color = getgenv().LuaBot.Fov.Camlock.Color
-    tracercircle.NumSides = getgenv().LuaBot.Fov.Camlock.Sides
+    tracercircle.Color = getgenv().vortex.Fov.Camlock.Color
+    tracercircle.NumSides = getgenv().vortex.Fov.Camlock.Sides
     
-    silentcircle.Visible  = getgenv().LuaBot.Fov.Silent.Visible
-    silentcircle.Radius   = getgenv().LuaBot.Fov.Silent.Size * 2
-    silentcircle.Filled = getgenv().LuaBot.Fov.Silent.Filled
-    silentcircle.Thickness = getgenv().LuaBot.Fov.Silent.Thickness
-    silentcircle.Transparency = getgenv().LuaBot.Fov.Silent.Transparency
+    silentcircle.Visible  = getgenv().vortex.Fov.Silent.Visible
+    silentcircle.Radius   = getgenv().vortex.Fov.Silent.Size * 2
+    silentcircle.Filled = getgenv().vortex.Fov.Silent.Filled
+    silentcircle.Thickness = getgenv().vortex.Fov.Silent.Thickness
+    silentcircle.Transparency = getgenv().vortex.Fov.Silent.Transparency
     silentcircle.Position = Vector2.new(Mouse.X, Mouse.Y + (game:GetService("GuiService"):GetGuiInset().Y))
-    silentcircle.Color = getgenv().LuaBot.Fov.Silent.Color
-    silentcircle.NumSides = getgenv().LuaBot.Fov.Silent.Sides
+    silentcircle.Color = getgenv().vortex.Fov.Silent.Color
+    silentcircle.NumSides = getgenv().vortex.Fov.Silent.Sides
     return silentcircle and tracercircle
 end
 
@@ -116,7 +118,7 @@ local ClosestPlrFromMouse = function()
     local Target, Closest = nil, 1/0
     
     for _ ,v in pairs(Players:GetPlayers()) do
-    	if getgenv().LuaBot.Checks.Wall then
+    	if getgenv().vortex.Checks.Wall then
     		if (v.Character and v ~= Client and v.Character:FindFirstChild("HumanoidRootPart")) then
     			local Position, OnScreen = Camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
     			local Distance = (Vector2.new(Position.X, Position.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
@@ -148,7 +150,7 @@ local ClosestPlrFromMouse2 = function()
     
     for _ ,v in pairs(Players:GetPlayers()) do
     	if (v.Character and v ~= Client and v.Character:FindFirstChild("HumanoidRootPart")) then
-        	if getgenv().LuaBot.Checks.Wall then
+        	if getgenv().vortex.Checks.Wall then
         		local Position, OnScreen = Camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
         		local Distance = (Vector2.new(Position.X, Position.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
         
@@ -207,9 +209,9 @@ local GetClosestBodyPartV2 = function (character)
 end
 
 Mouse.KeyDown:Connect(function(Key)
-    local Keybind = getgenv().LuaBot.Camlock.Keybind:lower()
+    local Keybind = getgenv().vortex.Camlock.Keybind:lower()
     if (Key == Keybind) then
-        if getgenv().LuaBot.Camlock.Enabled == true then
+        if getgenv().vortex.Camlock.Enabled == true then
             IsTargetting = not IsTargetting
             if IsTargetting then
                 Plr = ClosestPlrFromMouse2()
@@ -224,28 +226,28 @@ Mouse.KeyDown:Connect(function(Key)
 end)
 
 Mouse.KeyDown:Connect(function(Key)
-    local Keybind = getgenv().LuaBot.Silent.Keybind:lower()
-    if (Key == Keybind) and getgenv().LuaBot.Silent.UseKeybind == true then
-            if getgenv().LuaBot.Silent.Enabled == true then
-				getgenv().LuaBot.Silent.Enabled = false
-				if getgenv().LuaBot.Options.Notifications == true then
+    local Keybind = getgenv().vortex.Silent.Keybind:lower()
+    if (Key == Keybind) and getgenv().vortex.Silent.UseKeybind == true then
+            if getgenv().vortex.Silent.Enabled == true then
+				getgenv().vortex.Silent.Enabled = false
+				if getgenv().vortex.Options.Notifications == true then
 				    
 local Notify = AkaliNotif.Notify;
 				Notify({
 Description = "Silent Disabled";
-Title = "LuaBot";
+Title = "vortex";
 Duration = 1.5;
 });
 end 
                 
             else
-				getgenv().LuaBot.Silent.Enabled = true
-				if getgenv().LuaBot.Options.Notifications == true then
+				getgenv().vortex.Silent.Enabled = true
+				if getgenv().vortex.Options.Notifications == true then
 				    
 local Notify = AkaliNotif.Notify;
 				Notify({
 Description = "Silent Enabled";
-Title = "LuaBot";
+Title = "vortex";
 Duration = 1.5;
 });
 end
@@ -269,15 +271,15 @@ local backupindex = grmt.__index
 setreadonly(grmt, false)
 
 grmt.__index = newcclosure(function(self, v)
-    if (getgenv().LuaBot.Silent.Enabled and Mouse and tostring(v) == "Hit") then
+    if (getgenv().vortex.Silent.Enabled and Mouse and tostring(v) == "Hit") then
         if targ and targ.Character then
-    		if getgenv().LuaBot.Silent.Predict then
-    			local endpoint = game.Players[tostring(targ)].Character[getgenv().LuaBot.Silent.Aimpart].CFrame + (
-    				game.Players[tostring(targ)].Character[getgenv().LuaBot.Silent.Aimpart].Velocity * getgenv().LuaBot.Silent.Prediction
+    		if getgenv().vortex.Silent.Predict then
+    			local endpoint = game.Players[tostring(targ)].Character[getgenv().vortex.Silent.Aimpart].CFrame + (
+    				game.Players[tostring(targ)].Character[getgenv().vortex.Silent.Aimpart].Velocity * getgenv().vortex.Silent.Prediction
     			)
     			return (tostring(v) == "Hit" and endpoint)
     		else
-    			local endpoint = game.Players[tostring(targ)].Character[getgenv().LuaBot.Silent.Aimpart].CFrame
+    			local endpoint = game.Players[tostring(targ)].Character[getgenv().vortex.Silent.Aimpart].CFrame
     			return (tostring(v) == "Hit" and endpoint)
     		end
         end
@@ -288,27 +290,27 @@ end)
 
 
 RS.Heartbeat:Connect(function()
-	if getgenv().LuaBot.Silent.Enabled then
-	    if targ and targ.Character and targ.Character:WaitForChild(getgenv().LuaBot.Silent.Aimpart) then
-            if getgenv().LuaBot.Resolver.Enabled == true and targ.Character:WaitForChild("HumanoidRootPart").Velocity.magnitude > 70 then            
+	if getgenv().vortex.Silent.Enabled then
+	    if targ and targ.Character and targ.Character:WaitForChild(getgenv().vortex.Silent.Aimpart) then
+            if getgenv().vortex.Resolver.Enabled == true and targ.Character:WaitForChild("HumanoidRootPart").Velocity.magnitude > 70 then            
                 pcall(function()
-                    local TargetVel = targ.Character[getgenv().LuaBot.Silent.Aimpart]
+                    local TargetVel = targ.Character[getgenv().vortex.Silent.Aimpart]
                     TargetVel.Velocity = Vector3.new(0, 0, 0)
                     TargetVel.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
             
                 end)
             end
-            if getgenv().LuaBot.Checks.AntiGroundShots == true and targ.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
+            if getgenv().vortex.Checks.AntiGroundShots == true and targ.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
                 pcall(function()
-                    local TargetVelv5 = targ.Character[getgenv().LuaBot.Silent.Aimpart]
+                    local TargetVelv5 = targ.Character[getgenv().vortex.Silent.Aimpart]
                     TargetVelv5.Velocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
                     TargetVelv5.AssemblyLinearVelocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
                 end)
             end
             
-            if getgenv().LuaBot.Resolver.Enabled == true then            
+            if getgenv().vortex.Resolver.Enabled == true then            
                 pcall(function()
-                    local TargetVelv2 = targ.Character[getgenv().LuaBot.Silent.Aimpart]
+                    local TargetVelv2 = targ.Character[getgenv().vortex.Silent.Aimpart]
                     TargetVelv2.Velocity = Vector3.new(TargetVelv2.Velocity.X, 0, TargetVelv2.Velocity.Z)
                     TargetVelv2.AssemblyLinearVelocity = Vector3.new(TargetVelv2.Velocity.X, 0, TargetVelv2.Velocity.Z)
                 end)
@@ -319,47 +321,47 @@ RS.Heartbeat:Connect(function()
 
 
 
-if getgenv().LuaBot.Custom.Shake == true then
+if getgenv().vortex.Custom.Shake == true then
        if Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
        
-           getgenv().LuaBot.Camlock.ShakeValue = getgenv().LuaBot.Custom.AirShakeValue
+           getgenv().vortex.Camlock.ShakeValue = getgenv().vortex.Custom.AirShakeValue
        else
-        getgenv().LuaBot.Camlock.ShakeValue  = getgenv().LuaBot.Custom.GroundShakeValue
+        getgenv().vortex.Camlock.ShakeValue  = getgenv().vortex.Custom.GroundShakeValue
 
   end
 end
 
-if getgenv().LuaBot.Custom.Smoothness == true then
+if getgenv().vortex.Custom.Smoothness == true then
        if Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
        
-           getgenv().LuaBot.Camlock.SmoothnessValue = getgenv().LuaBot.Custom.AirSmoothnessValue
+           getgenv().vortex.Camlock.SmoothnessValue = getgenv().vortex.Custom.AirSmoothnessValue
        else
-        getgenv().LuaBot.Camlock.SmoothnessValue = getgenv().LuaBot.Custom.GroundSmoothnessValue
+        getgenv().vortex.Camlock.SmoothnessValue = getgenv().vortex.Custom.GroundSmoothnessValue
   end
 end
 
 
 
 
-    if getgenv().LuaBot.Camlock.Enabled == true then
-        if getgenv().LuaBot.Resolver.Enabled == true and Plr and Plr.Character and Plr.Character:WaitForChild(getgenv().LuaBot.Camlock.Aimpart) and Plr.Character:WaitForChild("HumanoidRootPart").Velocity.magnitude > 70 then
+    if getgenv().vortex.Camlock.Enabled == true then
+        if getgenv().vortex.Resolver.Enabled == true and Plr and Plr.Character and Plr.Character:WaitForChild(getgenv().vortex.Camlock.Aimpart) and Plr.Character:WaitForChild("HumanoidRootPart").Velocity.magnitude > 70 then
             pcall(function()
-                local TargetVelv3 = Plr.Character[getgenv().LuaBot.Camlock.Aimpart]
+                local TargetVelv3 = Plr.Character[getgenv().vortex.Camlock.Aimpart]
                 TargetVelv3.Velocity = Vector3.new(0, 0, 0)
                 TargetVelv3.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
             end)
         end
-        if getgenv().LuaBot.Checks.AntiGroundShots == true and Plr.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
+        if getgenv().vortex.Checks.AntiGroundShots == true and Plr.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
                 pcall(function()
-                    local TargetVelv5 = Plr.Character[getgenv().LuaBot.Camlock.Aimpart]
+                    local TargetVelv5 = Plr.Character[getgenv().vortex.Camlock.Aimpart]
                     TargetVelv5.Velocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
                     TargetVelv5.AssemblyLinearVelocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
                 end)
         end
     
-        if getgenv().LuaBot.Resolver.Enabled == true and Plr and Plr.Character and Plr.Character:WaitForChild(getgenv().LuaBot.Camlock.Aimpart) then
+        if getgenv().vortex.Resolver.Enabled == true and Plr and Plr.Character and Plr.Character:WaitForChild(getgenv().vortex.Camlock.Aimpart) then
             pcall(function()
-                local TargetVelv4 = Plr.Character[getgenv().LuaBot.Camlock.Aimpart]
+                local TargetVelv4 = Plr.Character[getgenv().vortex.Camlock.Aimpart]
                 TargetVelv4.Velocity = Vector3.new(TargetVelv4.Velocity.X, 0, TargetVelv4.Velocity.Z)
                 TargetVelv4.AssemblyLinearVelocity = Vector3.new(TargetVelv4.Velocity.X, 0, TargetVelv4.Velocity.Z)
             end)
@@ -368,8 +370,8 @@ end
 end)
 
 RS.RenderStepped:Connect(function()
-	if getgenv().LuaBot.Silent.Enabled then
-        if getgenv().LuaBot.Checks.Knocked == true and targ and targ.Character then 
+	if getgenv().vortex.Silent.Enabled then
+        if getgenv().vortex.Checks.Knocked == true and targ and targ.Character then 
             local KOd = targ.Character:WaitForChild("BodyEffects")["K.O"].Value
             local Grabbed = targ.Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
             if KOd or Grabbed then
@@ -377,8 +379,8 @@ RS.RenderStepped:Connect(function()
             end
         end
 	end
-    if getgenv().LuaBot.Camlock.Enabled == true then
-        if getgenv().LuaBot.Checks.Knocked == true and Plr and Plr.Character then 
+    if getgenv().vortex.Camlock.Enabled == true then
+        if getgenv().vortex.Checks.Knocked == true and Plr and Plr.Character then 
             local KOd = Plr.Character:WaitForChild("BodyEffects")["K.O"].Value
             local Grabbed = Plr.Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
             if KOd or Grabbed then
@@ -387,19 +389,19 @@ RS.RenderStepped:Connect(function()
             end
         end
         
-		if getgenv().LuaBot.Checks.DisableOnDeath == true and Plr and Plr.Character:FindFirstChild("Humanoid") then
+		if getgenv().vortex.Checks.DisableOnDeath == true and Plr and Plr.Character:FindFirstChild("Humanoid") then
 			if Plr.Character.Humanoid.health < 2 then
 				Plr = nil
 				IsTargetting = false
 			end
 		end
-		if getgenv().LuaBot.Checks.DisableOnDeath == true and Plr and Plr.Character:FindFirstChild("Humanoid") then
+		if getgenv().vortex.Checks.DisableOnDeath == true and Plr and Plr.Character:FindFirstChild("Humanoid") then
 			if Client.Character.Humanoid.health < 2 then
 				Plr = nil
 				IsTargetting = false
 			end
 		end
-        if getgenv().LuaBot.Checks.DisableOutsideFov == true and Plr and Plr.Character and Plr.Character:WaitForChild("HumanoidRootPart") then
+        if getgenv().vortex.Checks.DisableOutsideFov == true and Plr and Plr.Character and Plr.Character:WaitForChild("HumanoidRootPart") then
             if
             Camlock.Radius <
                 (Vector2.new(
@@ -411,31 +413,31 @@ RS.RenderStepped:Connect(function()
                 IsTargetting = false
             end
         end
-		if getgenv().LuaBot.Camlock.Predict and Plr and Plr.Character and Plr.Character:FindFirstChild(getgenv().LuaBot.Camlock.Aimpart) then
-			if getgenv().LuaBot.Camlock.Shake then
-				local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Position + Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Velocity * getgenv().LuaBot.Camlock.Prediction+
+		if getgenv().vortex.Camlock.Predict and Plr and Plr.Character and Plr.Character:FindFirstChild(getgenv().vortex.Camlock.Aimpart) then
+			if getgenv().vortex.Camlock.Shake then
+				local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().vortex.Camlock.Aimpart].Position + Plr.Character[getgenv().vortex.Camlock.Aimpart].Velocity * getgenv().vortex.Camlock.Prediction+
 				Vector3.new(
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue),
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue),
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue)
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue),
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue),
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue)
 				) * 0.1)
-				Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().LuaBot.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+				Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().vortex.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 			else
-    			local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Position + Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Velocity * getgenv().LuaBot.Camlock.Prediction)
-    			Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().LuaBot.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+    			local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().vortex.Camlock.Aimpart].Position + Plr.Character[getgenv().vortex.Camlock.Aimpart].Velocity * getgenv().vortex.Camlock.Prediction)
+    			Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().vortex.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 			end
-		elseif getgenv().LuaBot.Camlock.Predict == false and Plr and Plr.Character and Plr.Character:FindFirstChild(getgenv().LuaBot.Camlock.Aimpart) then
-			if getgenv().LuaBot.Camlock.Shake then
-				local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Position +
+		elseif getgenv().vortex.Camlock.Predict == false and Plr and Plr.Character and Plr.Character:FindFirstChild(getgenv().vortex.Camlock.Aimpart) then
+			if getgenv().vortex.Camlock.Shake then
+				local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().vortex.Camlock.Aimpart].Position +
 				Vector3.new(
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue),
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue),
-					math.random(-getgenv().LuaBot.Camlock.ShakeValue, getgenv().LuaBot.Camlock.ShakeValue)
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue),
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue),
+					math.random(-getgenv().vortex.Camlock.ShakeValue, getgenv().vortex.Camlock.ShakeValue)
 				) * 0.1)
-				Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().LuaBot.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+				Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().vortex.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 		    else
-    			local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().LuaBot.Camlock.Aimpart].Position)
-    			Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().LuaBot.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+    			local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().vortex.Camlock.Aimpart].Position)
+    			Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().vortex.Camlock.SmoothnessValue / 2, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 		    end
 		end
 	end
@@ -443,31 +445,31 @@ end)
 
 task.spawn(function ()
     while task.wait() do
-    	if getgenv().LuaBot.Silent.Enabled then
+    	if getgenv().vortex.Silent.Enabled then
             targ = ClosestPlrFromMouse()
     	end
         if Plr then
-            if getgenv().LuaBot.Camlock.Enabled and (Plr.Character) and getgenv().LuaBot.Camlock.NearestCursorAimpart then
-                getgenv().LuaBot.Camlock.Aimpart = tostring(GetClosestBodyPartV2(Plr.Character))
+            if getgenv().vortex.Camlock.Enabled and (Plr.Character) and getgenv().vortex.Camlock.NearestCursorAimpart then
+                getgenv().vortex.Camlock.Aimpart = tostring(GetClosestBodyPartV2(Plr.Character))
             end
         end
         if targ then
-            if getgenv().LuaBot.Silent.Enabled and (targ.Character) and getgenv().LuaBot.Silent.NearestCursorAimpart then
-                getgenv().LuaBot.Silent.Aimpart = tostring(GetClosestBodyPart(targ.Character))
+            if getgenv().vortex.Silent.Enabled and (targ.Character) and getgenv().vortex.Silent.NearestCursorAimpart then
+                getgenv().vortex.Silent.Aimpart = tostring(GetClosestBodyPart(targ.Character))
             end
         end
     end
 end)
 
 getgenv().uhpoop = {
-    ["Enabled"] = (getgenv().LuaBot.GunFov.Enabled),
-    ["Double-Barrel SG"] = {["FOV"] = (getgenv().LuaBot.GunFov.DoubleBarrel)}, --// Db
-    ["DoubleBarrel"] = {["FOV"] = (getgenv().LuaBot.GunFov.DoubleBarrel)}, --// Db
-    ["Revolver"] = {["FOV"] = (getgenv().LuaBot.GunFov.Revolver)}, --// Rev
-    ["SMG"] = {["FOV"] = (getgenv().LuaBot.GunFov.Smg)}, --// Uzi/Smg
-    ["Shotgun"] = {["FOV"] = (getgenv().LuaBot.GunFov.Shotgun)}, --// Sg
-    ["TacticalShotgun"] = {["FOV"] = (getgenv().LuaBot.GunFov.TacticalShotgun)}, --// Tac
-    ["Silencer"] = {["FOV"] = (getgenv().LuaBot.GunFov.Silencer)}, -- smg
+    ["Enabled"] = (getgenv().vortex.GunFov.Enabled),
+    ["Double-Barrel SG"] = {["FOV"] = (getgenv().vortex.GunFov.DoubleBarrel)}, --// Db
+    ["DoubleBarrel"] = {["FOV"] = (getgenv().vortex.GunFov.DoubleBarrel)}, --// Db
+    ["Revolver"] = {["FOV"] = (getgenv().vortex.GunFov.Revolver)}, --// Rev
+    ["SMG"] = {["FOV"] = (getgenv().vortex.GunFov.Smg)}, --// Uzi/Smg
+    ["Shotgun"] = {["FOV"] = (getgenv().vortex.GunFov.Shotgun)}, --// Sg
+    ["TacticalShotgun"] = {["FOV"] = (getgenv().vortex.GunFov.TacticalShotgun)}, --// Tac
+    ["Silencer"] = {["FOV"] = (getgenv().vortex.GunFov.Silencer)}, -- smg
     
 }                 
 
@@ -488,10 +490,10 @@ local Script = {Functions = {}}
     RS.RenderStepped:Connect(function()
     if Script.Functions.getEquippedWeaponName() ~= nil then
         local WeaponSettings = getgenv().uhpoop[Script.Functions.getEquippedWeaponName()]
-        if WeaponSettings ~= nil and getgenv().LuaBot.GunFov.Enabled == true then
-            getgenv().LuaBot.Fov.Silent.Size = WeaponSettings.FOV
+        if WeaponSettings ~= nil and getgenv().vortex.GunFov.Enabled == true then
+            getgenv().vortex.Fov.Silent.Size = WeaponSettings.FOV
         else
-            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Fov.Silent.Size
+            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Fov.Silent.Size
         end
     end
 end)
@@ -532,32 +534,32 @@ end
 game:GetService("RunService").Heartbeat:Connect(
                                 function()
                                     if
-                                        getgenv().LuaBot.Range.Enabled == true and getgenv().LuaBot.Range.Type == "Fov" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and targ.Character then
+                                        getgenv().vortex.Range.Enabled == true and getgenv().vortex.Range.Type == "Fov" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and targ.Character then
                                         if
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.CloseDetection
+                                                getgenv().vortex.Range.CloseDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.CloseFov
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.CloseFov
                                             
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.MidDetection
+                                                getgenv().vortex.Range.MidDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.MidFov
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.MidFov
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.FarDetection
+                                                getgenv().vortex.Range.FarDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.FarFov
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.FarFov
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.VeryFarDetection
+                                                getgenv().vortex.Range.VeryFarDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.VeryFarFov
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.VeryFarFov
                                         end
                                     end
                                 end
@@ -566,32 +568,32 @@ game:GetService("RunService").Heartbeat:Connect(
                             game:GetService("RunService").Heartbeat:Connect(
                                 function()
                                     if
-                                        getgenv().LuaBot.Range.Enabled == true and getgenv().LuaBot.Range.Type == "Prediction" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and Plr.Character then
+                                        getgenv().vortex.Range.Enabled == true and getgenv().vortex.Range.Type == "Prediction" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and Plr.Character then
                                         if
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.CloseDetection
+                                                getgenv().vortex.Range.CloseDetection
                                          then
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.ClosePrediction
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.ClosePrediction
                                             
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.MidDetection
+                                                getgenv().vortex.Range.MidDetection
                                          then
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.MidPrediction
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.MidPrediction
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.FarDetection
+                                                getgenv().vortex.Range.FarDetection
                                          then
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.FarPrediction
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.FarPrediction
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.VeryFarDetection
+                                                getgenv().vortex.Range.VeryFarDetection
                                          then
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.VeryFarPrediction
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.VeryFarPrediction
                                         end
                                     end
                                 end
@@ -600,36 +602,36 @@ game:GetService("RunService").Heartbeat:Connect(
                             game:GetService("RunService").Heartbeat:Connect(
                                 function()
                                     if
-                                        getgenv().LuaBot.Range.Enabled == true and getgenv().LuaBot.Range.Type == "Both" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and Plr.Character then
+                                        getgenv().vortex.Range.Enabled == true and getgenv().vortex.Range.Type == "Both" and Aiming.Selected ~= nil and (Aiming.Selected.Character) and targ and Plr.Character then
                                         if
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.CloseDetection
+                                                getgenv().vortex.Range.CloseDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.CloseFov
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.ClosePrediction
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.CloseFov
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.ClosePrediction
                                             
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.MidDetection
+                                                getgenv().vortex.Range.MidDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.MidFov
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.MidPrediction
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.MidFov
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.MidPrediction
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.FarDetection
+                                                getgenv().vortex.Range.FarDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.FarFov
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.FarPrediction
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.FarFov
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.FarPrediction
                                         elseif
                                             (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
-                                                getgenv().LuaBot.Range.VeryFarDetection
+                                                getgenv().vortex.Range.VeryFarDetection
                                          then
-                                            getgenv().LuaBot.Fov.Silent.Size = getgenv().LuaBot.Range.VeryFarFov
-                                            getgenv().LuaBot.Silent.Prediction= getgenv().LuaBot.Range.VeryFarPrediction
+                                            getgenv().vortex.Fov.Silent.Size = getgenv().vortex.Range.VeryFarFov
+                                            getgenv().vortex.Silent.Prediction= getgenv().vortex.Range.VeryFarPrediction
                                         end
                                     end
                                 end
@@ -641,7 +643,7 @@ local Player = game:GetService("Players").LocalPlayer
             local Mouse = Player:GetMouse()
             local SpeedGlitch = false
             Mouse.KeyDown:Connect(function(Key)
-                if getgenv().LuaBot.Macro.Type == "Normal" and getgenv().LuaBot.Macro.Enabled == true and Key == getgenv().LuaBot.Macro.Keybind then
+                if getgenv().vortex.Macro.Type == "Normal" and getgenv().vortex.Macro.Enabled == true and Key == getgenv().vortex.Macro.Keybind then
                     SpeedGlitch = not SpeedGlitch
                     if SpeedGlitch == true then
                         repeat game:GetService("RunService").Heartbeat:wait()
@@ -668,7 +670,7 @@ local Player = game:GetService("Players").LocalPlayer
             local Mouse = Player:GetMouse()
             local SpeedGlitch = false
             Mouse.KeyDown:Connect(function(Key)
-                if getgenv().LuaBot.Macro.Type == "Shift" and getgenv().LuaBot.Macro.Enabled == true and Key == getgenv().LuaBot.Macro.Keybind then
+                if getgenv().vortex.Macro.Type == "Shift" and getgenv().vortex.Macro.Enabled == true and Key == getgenv().vortex.Macro.Keybind then
                     SpeedGlitch = not SpeedGlitch
                     if SpeedGlitch == true then
                         repeat game:GetService("RunService").Heartbeat:wait()
@@ -690,7 +692,7 @@ local Player = game:GetService("Players").LocalPlayer
                 end
             end)
             
-      if getgenv().LuaBot.Resolver.Enabled == true then 
+      if getgenv().vortex.Resolver.Enabled == true then 
           local hrp
 local resolver = game:GetService("RunService")
 
@@ -708,81 +710,351 @@ end
             
             
 
-    while getgenv().LuaBot.AutoPrediction.Enabled == true do
+    while getgenv().vortex.AutoPrediction.Enabled == true do
     local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
     local pingValue = string.split(ping, " ")[1]
     local pingNumber = tonumber(pingValue)
 end   
    
     if pingNumber < 30 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P20)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P20)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P20)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P20)
     elseif pingNumber < 40 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P30)
-        LuaBot.Silent.Prediction= (getgenv().LuaBot.AutoPrediction.P30)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P30)
+        vortex.Silent.Prediction= (getgenv().vortex.AutoPrediction.P30)
     elseif pingNumber < 50 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P40)
-        LuaBot.Silent.Prediction= (getgenv().LuaBot.AutoPrediction.P40)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P40)
+        vortex.Silent.Prediction= (getgenv().vortex.AutoPrediction.P40)
     elseif pingNumber < 60 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P50)
-        LuaBot.Silent.Prediction= (getgenv().LuaBot.AutoPrediction.P50)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P50)
+        vortex.Silent.Prediction= (getgenv().vortex.AutoPrediction.P50)
     if pingNumber < 70 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P60)
-        LuaBot.Silent.Prediction= (getgenv().LuaBot.AutoPrediction.P60)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P60)
+        vortex.Silent.Prediction= (getgenv().vortex.AutoPrediction.P60)
     elseif pingNumber < 80 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P70)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P70)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P70)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P70)
     elseif pingNumber < 90 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P80)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P80)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P80)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P80)
   if pingNumber < 100 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P90)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P90)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P90)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P90)
     elseif pingNumber < 110 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P100)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P100)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P100)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P100)
          elseif pingNumber < 120 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P110)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P110)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P110)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P110)
          if pingNumber < 130 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P120)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P120)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P120)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P120)
          elseif pingNumber < 140 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P130)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P130)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P130)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P130)
          elseif pingNumber < 150 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P140)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P140)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P140)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P140)
          if pingNumber < 160 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P150)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P150)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P150)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P150)
         elseif pingNumber < 170 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P160)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P160)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P160)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P160)
         elseif pingNumber < 180 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P170)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P170)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P170)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P170)
         if pingNumber < 190 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P180)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P180)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P180)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P180)
         elseif pingNumber < 200 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P190)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P190)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P190)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P190)
         elseif pingNumber < 210 then
 end
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P200)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P200)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P200)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P200)
         if pingNumber < 260 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P250)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P250)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P250)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P250)
         elseif pingNumber < 310 then
-        LuaBot.Camlock.Prediction = (getgenv().LuaBot.AutoPrediction.P300)
-        LuaBot.Silent.Prediction = (getgenv().LuaBot.AutoPrediction.P300)
+        vortex.Camlock.Prediction = (getgenv().vortex.AutoPrediction.P300)
+        vortex.Silent.Prediction = (getgenv().vortex.AutoPrediction.P300)
 	end
  
     wait(0.5)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    loadstring(game:HttpGet('https://pastebin.com/raw/rdJfMnwi',true))()
